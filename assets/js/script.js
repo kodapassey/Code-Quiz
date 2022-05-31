@@ -1,4 +1,9 @@
 var startBtn = document.querySelector('.start-btn')
+var playerScore = 0;
+
+var finishQuizButton = document.createElement('button');
+finishQuizButton.textContent = 'Click to end quiz!';
+finishQuizButton.className = ('finish');
 
 // function that codes for first question
 var question1 = function () {
@@ -53,79 +58,35 @@ var question1 = function () {
             document.querySelector('.correct').style.display = 'none';
             document.querySelector('.nextButton').style.display = 'none';
         })
+        playerScore++;
+        console.log(playerScore);
     });
 
-    // event listener for incorrect answer
-    // creates new button to go to next question
-    buttonEl1.addEventListener('click', function () {
-        var incorrectAnswer = document.createElement('h2');
+    // event listener for all incorrect answers that displays incorrect text message
+    [buttonEl1, buttonEl2, buttonEl4].forEach(function (element) {
+        element.addEventListener('click', function () {
+            var incorrectAnswer = document.createElement('h2');
 
-        incorrectAnswer.textContent = 'Incorrect!';
-        incorrectAnswer.className = ('incorrect');
+            incorrectAnswer.textContent = 'Incorrect!';
+            incorrectAnswer.className = ('incorrect');
 
-        (buttonHolder).appendChild(incorrectAnswer);
+            (buttonHolder).appendChild(incorrectAnswer);
 
-        // button for new question that calls question 2 when clicked
-        var nextQuestionButton = document.createElement('button');
-        nextQuestionButton.textContent = 'Click for Next Question';
-        nextQuestionButton.className = ('nextButton');
-        (buttonHolder).appendChild(nextQuestionButton);
+            // button for new question that calls question 2 when clicked
+            var nextQuestionButton = document.createElement('button');
+            nextQuestionButton.textContent = 'Click for Next Question';
+            nextQuestionButton.className = ('nextButton');
+            (buttonHolder).appendChild(nextQuestionButton);
 
-        nextQuestionButton.addEventListener('click', function () {
-            question2();
-            document.querySelector('.question1').style.display = 'none';
-            document.querySelector('.incorrect').style.display = 'none';
-            document.querySelector('.nextButton').style.display = 'none';
-        })
-    });
-
-    // event listener for incorrect answer
-    // creates new button to go to next question
-    buttonEl2.addEventListener('click', function () {
-        var incorrectAnswer = document.createElement('h2');
-
-        incorrectAnswer.textContent = 'Incorrect!';
-        incorrectAnswer.className = ('incorrect');
-
-        (buttonHolder).appendChild(incorrectAnswer);
-
-        // button for new question that calls question 2 when clicked
-        var nextQuestionButton = document.createElement('button');
-        nextQuestionButton.textContent = 'Click for Next Question';
-        nextQuestionButton.className = ('nextButton');
-        (buttonHolder).appendChild(nextQuestionButton);
-
-        nextQuestionButton.addEventListener('click', function () {
-            question2();
-            document.querySelector('.question1').style.display = 'none';
-            document.querySelector('.incorrect').style.display = 'none';
-            document.querySelector('.nextButton').style.display = 'none';
-        })
-    });
-
-    // event listener for incorrect answer
-    // creates new button to go to next question
-    buttonEl4.addEventListener('click', function () {
-        var incorrectAnswer = document.createElement('h2');
-
-        incorrectAnswer.textContent = 'Incorrect!';
-        incorrectAnswer.className = ('incorrect');
-
-        (buttonHolder).appendChild(incorrectAnswer);
-
-        // button for new question that calls question 2 when clicked
-        var nextQuestionButton = document.createElement('button');
-        nextQuestionButton.textContent = 'Click for Next Question';
-        nextQuestionButton.className = ('nextButton');
-        (buttonHolder).appendChild(nextQuestionButton);
-
-
-        nextQuestionButton.addEventListener('click', function () {
-            question2();
-            document.querySelector('.question1').style.display = 'none';
-            document.querySelector('.incorrect').style.display = 'none';
-            document.querySelector('.nextButton').style.display = 'none';
-        })
+            nextQuestionButton.addEventListener('click', function () {
+                question2();
+                document.querySelector('.question1').style.display = 'none';
+                document.querySelector('.incorrect').style.display = 'none';
+                document.querySelector('.nextButton').style.display = 'none';
+            })
+            playerScore--;
+            console.log(playerScore);
+        });
     });
 };
 
@@ -169,7 +130,7 @@ var question2 = function () {
 
         (buttonHolder).appendChild(correctAnswer);
 
-        // button for new question that calls question 2 when clicked
+        // button for new question that calls question 3 when clicked
         var nextQuestionButton = document.createElement('button');
         nextQuestionButton.textContent = 'Click for Next Question';
         nextQuestionButton.className = ('nextButton2');
@@ -181,100 +142,79 @@ var question2 = function () {
             document.querySelector('.correct2').style.display = 'none';
             document.querySelector('.nextButton2').style.display = 'none';
         })
+        playerScore++;
+        console.log(playerScore);
     });
 
-    // event listener for incorrect answer
-    // creates new button to go to next question
-    buttonEl1.addEventListener('click', function () {
-        var incorrectAnswer = document.createElement('h2');
 
-        incorrectAnswer.textContent = 'Incorrect!';
-        incorrectAnswer.className = ('incorrect2');
+    // event listener for all incorrect answers that displays incorrect text message
+    [buttonEl1, buttonEl3, buttonEl4].forEach(function (element) {
+        element.addEventListener('click', function () {
+            var incorrectAnswer = document.createElement('h2');
 
-        (buttonHolder).appendChild(incorrectAnswer);
+            incorrectAnswer.textContent = 'Incorrect!';
+            incorrectAnswer.className = ('incorrect2');
 
-        // button for new question that calls question 2 when clicked
-        var nextQuestionButton = document.createElement('button');
-        nextQuestionButton.textContent = 'Click for Next Question';
-        nextQuestionButton.className = ('nextButton2');
-        (buttonHolder).appendChild(nextQuestionButton);
+            (buttonHolder).appendChild(incorrectAnswer);
 
-        nextQuestionButton.addEventListener('click', function () {
-            question3();
-            document.querySelector('.question2').style.display = 'none';
-            document.querySelector('.incorrect2').style.display = 'none';
-            document.querySelector('.nextButton2').style.display = 'none';
-        })
-    });
+            // button for new question that calls question 3 when clicked
+            var nextQuestionButton = document.createElement('button');
+            nextQuestionButton.textContent = 'Click for Next Question';
+            nextQuestionButton.className = ('nextButton2');
+            (buttonHolder).appendChild(nextQuestionButton);
 
-    // event listener for correct answer
-    // creates new button to go to next question
-    buttonEl3.addEventListener('click', function () {
-        var incorrectAnswer = document.createElement('h2');
-
-        incorrectAnswer.textContent = 'Incorrect!';
-        incorrectAnswer.className = ('incorrect2');
-
-        (buttonHolder).appendChild(incorrectAnswer);
-
-        // button for new question that calls question 2 when clicked
-        var nextQuestionButton = document.createElement('button');
-        nextQuestionButton.textContent = 'Click for Next Question';
-        nextQuestionButton.className = ('nextButton2');
-        (buttonHolder).appendChild(nextQuestionButton);
-
-        nextQuestionButton.addEventListener('click', function () {
-            question3();
-            document.querySelector('.question2').style.display = 'none';
-            document.querySelector('.incorrect2').style.display = 'none';
-            document.querySelector('.nextButton2').style.display = 'none';
-        })
-    });
-
-    // event listener for incorrect answer
-    // creates new button to go to next question
-    buttonEl4.addEventListener('click', function () {
-        var incorrectAnswer = document.createElement('h2');
-
-        incorrectAnswer.textContent = 'Incorrect!';
-        incorrectAnswer.className = ('incorrect2');
-
-        (buttonHolder).appendChild(incorrectAnswer);
-
-        // button for new question that calls question 2 when clicked
-        var nextQuestionButton = document.createElement('button');
-        nextQuestionButton.textContent = 'Click for Next Question';
-        nextQuestionButton.className = ('nextButton2');
-        (buttonHolder).appendChild(nextQuestionButton);
-
-
-        nextQuestionButton.addEventListener('click', function () {
-            question3();
-            document.querySelector('.question2').style.display = 'none';
-            document.querySelector('.incorrect2').style.display = 'none';
-            document.querySelector('.nextButton2').style.display = 'none';
-        })
+            nextQuestionButton.addEventListener('click', function () {
+                question3();
+                document.querySelector('.question2').style.display = 'none';
+                document.querySelector('.incorrect2').style.display = 'none';
+                document.querySelector('.nextButton2').style.display = 'none';
+            })
+            playerScore--;
+            console.log(playerScore);
+        });
     });
 };
 
-var question3 = function () {
+// var question3 = function () {
 
+// };
+
+// this is going to be changed to finishQuiz once all questions are added
+var question3 = function () {
+    var buttonHolder = document.querySelector('.buttons');
+
+    (buttonHolder).appendChild(finishQuizButton);
+
+    finishQuizButton.addEventListener('click', function () {
+        var finishText = document.createElement('h2')
+        finishText.textContent = 'Congrats, you finished with a score of ' + playerScore + '/10.';
+        (buttonHolder).appendChild(finishText);
+
+        finishQuizButton.style.display = 'none';
+    });
 }
 
-// let questions = [question1, question2]
-
-// for (let i = 0; i < questions.length; i++) {
-//     questions[i]();
-
-//
-
-var questions = function () {
+var startQuiz = function () {
     startBtn.addEventListener('click', function () {
         question1();
 
         document.querySelector('.startText').style.display = 'none';
 
+        var timeLeft = 5;
+
+        var downloadTimer = setInterval(function function1() {
+            document.querySelector(".countdown").innerHTML = timeLeft +
+                "&nbsp" + "seconds remaining";
+
+            timeLeft -= 1;
+            if (timeLeft <= 0) {
+                clearInterval(downloadTimer);
+                document.querySelector(".countdown").innerHTML = "Time is up!";
+            }
+
+        }, 1000);
+
     })
 }
 
-questions();
+startQuiz();
