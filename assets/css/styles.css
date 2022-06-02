@@ -28,7 +28,7 @@ body {
 .question3 button,
 .question4 button,
 .question5 button,
-.finishQuizButton,
+.finish,
 .start-btn {
     position: relative;
     display: block;
@@ -49,7 +49,7 @@ body {
 .question3 button:hover,
 .question4 button:hover,
 .question5 button:hover,
-.finishQuizButton:hover,
+.finish:hover,
 .start-btn:hover {
     background-color: darkred;
     box-shadow: 5px 5px 5px black;
@@ -76,7 +76,7 @@ body {
 .nextButton2,
 .nextButton3,
 .nextButton4,
-.finishQuizButton {
+.finish {
     position: relative;
     display: block;
     margin: 10px;

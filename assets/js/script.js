@@ -1,6 +1,5 @@
 var startBtn = document.querySelector('.start-btn')
 var playerScore = 0;
-var questionTimer = 0;
 
 var finishQuizButton = document.createElement('button');
 finishQuizButton.textContent = 'Click to view your score!';
@@ -61,8 +60,6 @@ var question1 = function () {
         })
         // player score increases for right answer selection
         playerScore++;
-
-        questionTimer++;
     });
 
     // event listener for all incorrect answers that displays incorrect text message
@@ -87,12 +84,7 @@ var question1 = function () {
                 document.querySelector('.incorrect').style.display = 'none';
                 document.querySelector('.nextButton').style.display = 'none';
             })
-            if (playerScore > 0) {
-                playerScore--
 
-
-                questionTimer++;
-            }
         });
     });
 };
@@ -150,8 +142,6 @@ var question2 = function () {
             document.querySelector('.nextButton2').style.display = 'none';
         })
         playerScore++;
-
-        questionTimer++;
     });
 
 
@@ -177,11 +167,7 @@ var question2 = function () {
                 document.querySelector('.incorrect2').style.display = 'none';
                 document.querySelector('.nextButton2').style.display = 'none';
             })
-            if (playerScore > 0) {
-                playerScore--
 
-                questionTimer++;
-            }
         });
     });
 };
@@ -200,8 +186,8 @@ var question3 = function () {
 
     // text content for each dom element within question
     questionText.textContent = 'What is the correct syntax for referring to an external script called "xxx.js"?';
-    buttonEl1.textContent = '<script> href="xxx.js"';
-    buttonEl2.textContent = '<script src="xxx.js"';
+    buttonEl1.textContent = '<script href="xxx.js">';
+    buttonEl2.textContent = '<script src="xxx.js">';
     buttonEl3.textContent = '<script name = "xxx.js">';
 
 
@@ -237,8 +223,6 @@ var question3 = function () {
             document.querySelector('.nextButton3').style.display = 'none';
         })
         playerScore++;
-
-        questionTimer++;
     });
 
 
@@ -264,11 +248,7 @@ var question3 = function () {
                 document.querySelector('.incorrect3').style.display = 'none';
                 document.querySelector('.nextButton3').style.display = 'none';
             })
-            if (playerScore > 0) {
-                playerScore--
 
-                questionTimer++;
-            }
         });
     });
 };
@@ -321,8 +301,6 @@ var question4 = function () {
             document.querySelector('.nextButton4').style.display = 'none';
         })
         playerScore++;
-
-        questionTimer++;
     });
 
 
@@ -348,11 +326,7 @@ var question4 = function () {
                 document.querySelector('.incorrect4').style.display = 'none';
                 document.querySelector('.nextButton4').style.display = 'none';
             })
-            if (playerScore > 0) {
-                playerScore--
 
-                questionTimer++;
-            }
         });
     });
 }
@@ -411,7 +385,6 @@ var question5 = function () {
         })
         playerScore++;
 
-        questionTimer++;
     });
 
 
@@ -437,24 +410,20 @@ var question5 = function () {
                 document.querySelector('.incorrect5').style.display = 'none';
                 document.querySelector('.nextButton5').style.display = 'none';
             })
-            if (playerScore > 0) {
-                playerScore--
 
-                questionTimer++;
-            }
         });
     });
 }
 
-// this is going to be changed to finishQuiz once all questions are added
 var finishQuiz = function () {
     var buttonHolder = document.querySelector('.buttons');
 
     (buttonHolder).appendChild(finishQuizButton);
 
+    // finish quiz button is declared at top of page
     finishQuizButton.addEventListener('click', function () {
-        var finishText = document.createElement('h2')
-        finishText.textContent = 'Congrats, you finished with a score of ' + playerScore + '/5.';
+        var finishText = document.createElement('h2');
+        finishText.textContent = 'You finished with a score of ' + playerScore + '/5.';
         (buttonHolder).appendChild(finishText);
 
         finishQuizButton.style.display = 'none';
@@ -466,31 +435,7 @@ var startQuiz = function () {
         question1();
 
         document.querySelector('.startText').style.display = 'none';
-
-        var timeLeft = 30;
-
-        var downloadTimer = setInterval(function function1() {
-            document.querySelector(".countdown").innerHTML = timeLeft +
-                "&nbsp" + "seconds remaining";
-
-            timeLeft -= 1;
-            if (timeLeft <= 0 && questionTimer !== 3) {
-                noTimeLeft();
-                clearInterval(downloadTimer);
-                document.querySelector(".countdown").innerHTML = "";
-            }
-
-        }, 1000);
     })
-}
-
-var noTimeLeft = function () {
-    var buttonHolder = document.querySelector('.buttons');
-
-    var noTimeText = document.createElement('h2');
-    noTimeText.textContent = 'You have ran out of time!'
-    noTimeText.className = ('noTime');
-    (buttonHolder).appendChild(noTimeText);
 }
 
 startQuiz();
