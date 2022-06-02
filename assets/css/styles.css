@@ -1,0 +1,114 @@
+body {
+    background-color: dark;
+}
+
+.main {
+    text-align: center;
+}
+
+.main h1 {
+    font-size: 45px;
+}
+
+.question1,
+.question2,
+.question3,
+.question4,
+.question5 {
+    text-align: center;
+}
+
+.nextButton1,
+.nextButton2,
+.nextButton3,
+.nextButton4,
+.nextButton5,
+.question1 button,
+.question2 button,
+.question3 button,
+.question4 button,
+.question5 button,
+.finishQuizButton,
+.start-btn {
+    position: relative;
+    display: block;
+    margin: 10px;
+    background-color: red;
+    color: white;
+    width: 155px;
+    height: 40px;
+    border: 2px solid black;
+    border-radius: 15px;
+    font-size: 85%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.question1 button:hover,
+.question2 button:hover,
+.question3 button:hover,
+.question4 button:hover,
+.question5 button:hover,
+.finishQuizButton:hover,
+.start-btn:hover {
+    background-color: darkred;
+    box-shadow: 5px 5px 5px black;
+    cursor: pointer;
+}
+
+.correct,
+.correct2,
+.correct3,
+.correct4,
+.correct5,
+.incorrect,
+.incorrect2,
+.incorrect3,
+.incorrect4,
+.incorrect5 {
+    border-top: 2px solid grey;
+    color: grey;
+    padding-top: 20px;
+}
+
+
+.nextButton,
+.nextButton2,
+.nextButton3,
+.nextButton4,
+.finishQuizButton {
+    position: relative;
+    display: block;
+    margin: 10px;
+    background-color: red;
+    color: white;
+    width: 155px;
+    height: 40px;
+    border: 2px solid black;
+    border-radius: 15px;
+    font-size: 85%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.nextButton:hover,
+.nextButton2:hover,
+.nextButton3:hover,
+.nextButton4:hover,
+.nextButton5:hover {
+    background-color: darkred;
+    box-shadow: 5px 5px 5px black;
+    cursor: pointer;
+}
+
+
+.header {
+    display: inline;
+}
+
+.countdown {
+    position: relative;
+    color: red;
+    text-align: right;
+    top: -45px;
+}
