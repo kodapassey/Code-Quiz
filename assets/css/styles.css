@@ -2,34 +2,82 @@ body {
     background-color: blanchedalmond;
 }
 
-.questionText {
+.mainText {
+    text-align: center;
+    font-size: 5vw;
+    margin-bottom: 0px;
+    font-family: 'Staatliches', cursive;
+}
+
+.secondaryText {
     text-align: center;
     font-size: 3vw;
     margin-bottom: 40px;
+    margin-top: 15px;
     font-family: 'Staatliches', cursive;
 }
 
 .start-btn,
 .options {
-    font-family: 'Staatliches', cursive;
+    font-family: 'Open Sans', sans-serif;
     position: relative;
     display: block;
     margin: 10px;
     background-color: #5a6ee0;
     color: white;
-    width: 155px;
-    height: 40px;
+    width: 210px;
+    height: 55px;
     border: 2px solid black;
     border-radius: 10px;
-    font-size: 100%;
+    font-size: 80%;
     margin-left: auto;
     margin-right: auto;
 }
-
 
 .start-btn:hover,
 .options:hover {
     background-color: #485bc7;
     box-shadow: 2px 2px 2px black;
     cursor: pointer;
+}
+
+.time {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+.highScoreDiv {
+    position: absolute;
+    bottom: 10px;
+    border: 2px solid;
+    width: 11%;
+}
+
+.highScoreH1 {
+    font-family: 'Staatliches', cursive;
+    font-size: 40px;
+    margin-bottom: 0px;
+    margin-top: 15px;
+    text-align: center;
+}
+
+
+.highScore {
+    font-family: 'Staatliches', cursive;
+    font-size: 20px;
+    margin-top: 0px;
+    text-align: center;
+}
+
+#initials {
+    border: 2px solid black;
+    width: 142px;
+    height: 25px;
+    position: relative;
+    text-align: center;
+    left: 45%;
+    font-family: 'Staatliches', cursive;
+    font-size: 15px;
 }

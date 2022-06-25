@@ -71,10 +71,11 @@ const questionsArr = [
     }
 ]
 
-let time = 60000;
+let time = 60;
 
 var timeHolder = document.querySelector('#timeHolder')
 const timeDisplay = document.createElement('div');
+timeDisplay.classList = 'time';
 timeHolder.append(timeDisplay);
 
 let questionCount = 0;
@@ -85,16 +86,20 @@ function subtractTime() {
 
 function startQuiz() {
     var startBtn = document.querySelector('.start-btn');
+    var mainText = document.querySelector('.mainText');
+    var secondaryText = document.querySelector('.secondaryText');
     startBtn.addEventListener('click', function () {
         renderQuestion();
 
         const timer = setInterval(function () {
             checkTime();
-            timeDisplay.textContent = time;
+            timeDisplay.textContent = `Time Remaining: ${time}`;
             time--;
         }, 1000);
 
         startBtn.style.display = 'none';
+        mainText.style.display = 'none';
+        secondaryText.style.display = 'none';
 
         function renderQuestion() {
 
@@ -108,7 +113,7 @@ function startQuiz() {
 
                 const textH1 = document.createElement('h1');
                 textH1.textContent = text;
-                textH1.classList = 'questionText'
+                textH1.classList = 'mainText'
                 const aBtn = document.createElement('button');
                 aBtn.textContent = a;
                 aBtn.classList = 'options'
@@ -182,23 +187,65 @@ function startQuiz() {
 
 function finishQuiz() {
     if (localStorage.getItem('HighScore') === null || JSON.parse(localStorage.getItem('HighScore') < `${time}`)) {
+
+        var endQuizH1 = document.createElement('h1');
+        endQuizH1.textContent = 'You Beat The Current HighScore! Save your new HighScore below!'
+        endQuizH1.classList = 'mainText'
+
+        // creates form with input for user to input initials
         var form = document.createElement('form');
         form.innerHTML = '<input type=text id="initials" placeholder="Type Initials Here">'
+
+        // submit button to add initials to localStorage
         var submitBtn = document.createElement('button');
-        submitBtn.innerHTML = 'Submit HighScore'
+        submitBtn.classList = 'options'
+        submitBtn.innerHTML = 'Submit HighScore';
+
+        // clears questions off screen
         document.body.innerHTML = '';
-        document.body.append(form, submitBtn);
+
+        // appends form and submit button to page
+        document.body.append(endQuizH1, form, submitBtn);
+
+        // onClick function when submit button is clicked, initials will be added to localStorage
         submitBtn.addEventListener('click', function () {
+
+            // clears localStorage for new highscore to be added
             localStorage.clear();
+
+            // takes value from input field
             var input = document.querySelector('#initials').value;
+
+            // sets actual score
             localStorage.setItem('HighScore', `${time}`);
-            localStorage.setItem('HighScoreName', `${input}`);
+
+            // sets users initials with alert if user doesn't input any value
+            if (input == '') {
+                alert('Please input your initials');
+            } else {
+                localStorage.setItem('HighScoreName', `${input}`);
+                location.reload();
+            }
         })
+        // else if for if user did not beat the highscore
     } else if (JSON.parse(localStorage.getItem('HighScore') > `${time}`)) {
         alert('Sorry, you did not beat the current highscore.')
         document.body.innerHTML = '';
+        location.reload();
     }
 };
+
+var highScoreText = document.querySelector('.highScore');
+
+function score() {
+    if (localStorage.getItem('HighScore') === null) {
+        highScoreText.textContent = 'There are no high scores just yet!';
+    } else {
+        highScoreText.textContent = `${localStorage.getItem('HighScoreName')} - ${JSON.parse(localStorage.getItem('HighScore'))}`
+    }
+}
+
+score();
 
 console.log(localStorage.getItem('HighScore'));
 console.log(`${time}`);
