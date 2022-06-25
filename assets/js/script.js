@@ -1,3 +1,4 @@
+// array of objects, each object is 1 question in the quiz
 const questionsArr = [
     {
         text: 'Inside which HTML element do we put the JavaScript?',
@@ -71,46 +72,66 @@ const questionsArr = [
     }
 ]
 
+// starting time - 60 seconds
 let time = 60;
 
+// creating div to hold my timer
 var timeHolder = document.querySelector('#timeHolder')
 const timeDisplay = document.createElement('div');
 timeDisplay.classList = 'time';
 timeHolder.append(timeDisplay);
 
+
+// question count that increases after every question
 let questionCount = 0;
 
+
+// function that subtracts time after an incorrect question
 function subtractTime() {
     time -= 5;
 }
 
+
+// function to start quiz, function will run on start button click then render the first question
 function startQuiz() {
+
+    // selecting start button and the h1/h2 that are visible on page start
     var startBtn = document.querySelector('.start-btn');
     var mainText = document.querySelector('.mainText');
     var secondaryText = document.querySelector('.secondaryText');
+
+    // event listener to start quiz
     startBtn.addEventListener('click', function () {
         renderQuestion();
 
+        // setInterval function that displays time and subtracts 1 second
         const timer = setInterval(function () {
             checkTime();
             timeDisplay.textContent = `Time Remaining: ${time}`;
             time--;
         }, 1000);
 
+        // hides items on main page when quiz begins
         startBtn.style.display = 'none';
         mainText.style.display = 'none';
         secondaryText.style.display = 'none';
 
+        // function to render each question
         function renderQuestion() {
 
             if (questionCount < questionsArr.length) {
+
+                // creates divs for each question and 3 options
                 const textDiv = document.createElement('div');
                 const optionDiv = document.createElement('div');
+
+                // setup of variables for text content on each question
                 const text = questionsArr[questionCount].text;
                 const a = questionsArr[questionCount].a;
                 const b = questionsArr[questionCount].b;
                 const c = questionsArr[questionCount].c;
 
+                // gives variables text content of text, a, b, or c
                 const textH1 = document.createElement('h1');
                 textH1.textContent = text;
                 textH1.classList = 'mainText'
@@ -124,29 +145,34 @@ function startQuiz() {
                 cBtn.textContent = c;
                 cBtn.classList = 'options'
 
+                // appends each option and question text to body
                 optionDiv.append(aBtn, bBtn, cBtn);
                 textDiv.append(textH1);
                 document.body.append(textDiv, optionDiv);
 
+                // event listener for each button
                 optionDiv.addEventListener('click', function (event) {
-                    if (event.target.textContent === questionsArr[questionCount][questionsArr[questionCount].text]) {
-                        console.log('hi')
-                    }
-                    else if (event.target.textContent === questionsArr[questionCount][questionsArr[questionCount].correct]) {
+
+                    // if statement if user selects correct option
+                    if (event.target.textContent === questionsArr[questionCount][questionsArr[questionCount].correct]) {
                         alert('correct!');
                         questionCount++;
                         optionDiv.innerHTML = '';
                         textDiv.innerHTML = ''
-                        // test to check whether time has ran out
+                        // test to check whether time has ran out, if there is still time, then render a new question(if there is still more questions), if not, end quiz
                         if (questionCount < questionsArr.length && time > 0) {
                             renderQuestion();
-                        } else {
+                        }
+                        // else statement if time has ran out
+                        else {
                             clearInterval(timer);
                             alert(`Game Over! Your score was: ${time}`);
                             questionCount.innerHTML = '';
                             finishQuiz();
                         }
-                    } else {
+                    }
+                    // else statment if user selects wrong answer
+                    else {
                         subtractTime();
                         alert('incorrect!');
                         questionCount++;
@@ -165,6 +191,7 @@ function startQuiz() {
                 });
             }
         };
+        // function to check time every second that is called in the setInterval function
         function checkTime() {
             if (time <= 0) {
                 alert('time is up');
@@ -180,12 +207,11 @@ function startQuiz() {
 };
 
 
-// check if local storage has any items under 'highscore' key
-// if there are items under highscore, check if new time is greater than stored time
-// if new time isn't greater, alert saying 'sorry, you did not beat the highscore, would you like to try again?' (run startQuiz function)
-// if new time is greater or if there is no highscores saved, prompt for initials/save input value of initials
-
+// function that is ran when user finishes quiz or if time has ran out
 function finishQuiz() {
+    // if statement checking if there are any highscores saved into local storage, if there is highscores, they are checked against new user time
+    // if old highscore is greater than new highscore player is alerted that they did not beat highscore
+    // if old highscore is less than new highscore or if there is no highscore saved player can input initials and save them
     if (localStorage.getItem('HighScore') === null || JSON.parse(localStorage.getItem('HighScore') < `${time}`)) {
 
         var endQuizH1 = document.createElement('h1');
@@ -235,8 +261,11 @@ function finishQuiz() {
     }
 };
 
+
+
 var highScoreText = document.querySelector('.highScore');
 
+// function that displays highscore or if there isn't a highscore yet
 function score() {
     if (localStorage.getItem('HighScore') === null) {
         highScoreText.textContent = 'There are no high scores just yet!';
@@ -246,13 +275,4 @@ function score() {
 }
 
 score();
-
-console.log(localStorage.getItem('HighScore'));
-console.log(`${time}`);
-console.log(JSON.parse(localStorage.getItem('HighScore') < `${time}`));
-console.log(localStorage.getItem('HighScore') === null);
-
-
 startQuiz();
-
-
