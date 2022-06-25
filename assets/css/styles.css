@@ -51,8 +51,9 @@ body {
 .highScoreDiv {
     position: absolute;
     bottom: 10px;
+    left: 25%;
     border: 2px solid;
-    width: 11%;
+    width: 50%;
 }
 
 .highScoreH1 {
@@ -143,18 +144,18 @@ body {
         border: 2px solid black;
         width: 10%;
         height: 5%;
-        position: relative;
+        display: block;
         text-align: center;
-        left: 35%;
+        position: relative;
         font-family: 'Staatliches', cursive;
-        font-size: 100%;
+        font-size: 90%;
     }
 }
 
 @media screen and (max-width: 980px) {
     .mainText {
         text-align: center;
-        font-size: 8vw;
+        font-size: 7vw;
         margin-bottom: 0px;
         font-family: 'Staatliches', cursive;
     }
@@ -211,11 +212,11 @@ body {
         border: 2px solid black;
         width: 10%;
         height: 5%;
-        position: relative;
+        display: block;
         text-align: center;
-        left: 35%;
+        position: relative;
         font-family: 'Staatliches', cursive;
-        font-size: 100%;
+        font-size: 72%;
     }
 }
 
@@ -281,9 +282,8 @@ body {
         height: 5%;
         position: relative;
         text-align: center;
-        left: 35%;
         font-family: 'Staatliches', cursive;
-        font-size: 100%;
+        font-size: 54%;
     }
 }
 
@@ -349,9 +349,8 @@ body {
         height: 5%;
         position: relative;
         text-align: center;
-        left: 35%;
         font-family: 'Staatliches', cursive;
-        font-size: 100%;
+        font-size: 41%;
     }
 }
 
@@ -417,8 +416,7 @@ body {
         height: 5%;
         position: relative;
         text-align: center;
-        left: 35%;
         font-family: 'Staatliches', cursive;
-        font-size: 100%;
+        font-size: 51%;
     }
 }

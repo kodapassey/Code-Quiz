@@ -73,7 +73,7 @@ const questionsArr = [
 ]
 
 // starting time - 60 seconds
-let time = 60;
+let time = 6000;
 
 // creating div to hold my timer
 var timeHolder = document.querySelector('#timeHolder')
