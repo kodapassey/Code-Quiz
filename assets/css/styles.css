@@ -12,7 +12,7 @@ body {
 .secondaryText {
     text-align: center;
     font-size: 3vw;
-    margin-bottom: 40px;
+    margin-bottom: 2%;
     margin-top: 15px;
     font-family: 'Staatliches', cursive;
 }
@@ -25,7 +25,7 @@ body {
     margin: 10px;
     background-color: #5a6ee0;
     color: white;
-    width: 210px;
+    width: 14%;
     height: 55px;
     border: 2px solid black;
     border-radius: 10px;
@@ -73,11 +73,148 @@ body {
 
 #initials {
     border: 2px solid black;
-    width: 142px;
-    height: 25px;
+    width: 10%;
+    height: 5%;
     position: relative;
     text-align: center;
     left: 45%;
     font-family: 'Staatliches', cursive;
-    font-size: 15px;
+    font-size: 100%;
+}
+
+@media screen and (max-width: 500px) {
+
+    .mainText {
+        text-align: center;
+        font-size: 8vw;
+        margin-bottom: 0px;
+        font-family: 'Staatliches', cursive;
+    }
+
+    .secondaryText {
+        text-align: center;
+        font-size: 5vw;
+        margin-bottom: 5%;
+        margin-top: 15px;
+        font-family: 'Staatliches', cursive;
+    }
+
+    .start-btn,
+    .options {
+        font-family: 'Open Sans', sans-serif;
+        position: relative;
+        display: block;
+        margin: 10px;
+        background-color: #5a6ee0;
+        color: white;
+        width: 41%;
+        height: 55px;
+        border: 2px solid black;
+        border-radius: 10px;
+        font-size: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .highScoreDiv {
+        position: absolute;
+        bottom: 10px;
+        left: 25%;
+        border: 2px solid;
+        width: 50%;
+    }
+
+    .highScoreH1 {
+        font-family: 'Staatliches', cursive;
+        font-size: 40px;
+        margin-bottom: 0px;
+        margin-top: 15px;
+        text-align: center;
+    }
+
+    .highScore {
+        font-family: 'Staatliches', cursive;
+        font-size: 20px;
+        margin-top: 0px;
+        text-align: center;
+    }
+
+    #initials {
+        border: 2px solid black;
+        width: 10%;
+        height: 5%;
+        position: relative;
+        text-align: center;
+        left: 35%;
+        font-family: 'Staatliches', cursive;
+        font-size: 100%;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .mainText {
+        text-align: center;
+        font-size: 8vw;
+        margin-bottom: 0px;
+        font-family: 'Staatliches', cursive;
+    }
+
+    .secondaryText {
+        text-align: center;
+        font-size: 5vw;
+        margin-bottom: 5%;
+        margin-top: 15px;
+        font-family: 'Staatliches', cursive;
+    }
+
+    .start-btn,
+    .options {
+        font-family: 'Open Sans', sans-serif;
+        position: relative;
+        display: block;
+        margin: 10px;
+        background-color: #5a6ee0;
+        color: white;
+        width: 41%;
+        height: 55px;
+        border: 2px solid black;
+        border-radius: 10px;
+        font-size: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .highScoreDiv {
+        position: absolute;
+        bottom: 10px;
+        left: 25%;
+        border: 2px solid;
+        width: 50%;
+    }
+
+    .highScoreH1 {
+        font-family: 'Staatliches', cursive;
+        font-size: 40px;
+        margin-bottom: 0px;
+        margin-top: 15px;
+        text-align: center;
+    }
+
+    .highScore {
+        font-family: 'Staatliches', cursive;
+        font-size: 20px;
+        margin-top: 0px;
+        text-align: center;
+    }
+
+    #initials {
+        border: 2px solid black;
+        width: 10%;
+        height: 5%;
+        position: relative;
+        text-align: center;
+        left: 35%;
+        font-family: 'Staatliches', cursive;
+        font-size: 100%;
+    }
 }
