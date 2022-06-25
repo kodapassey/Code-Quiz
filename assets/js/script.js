@@ -71,7 +71,7 @@ const questionsArr = [
     }
 ]
 
-let time = 60;
+let time = 60000;
 
 var timeHolder = document.querySelector('#timeHolder')
 const timeDisplay = document.createElement('div');
@@ -99,29 +99,39 @@ function startQuiz() {
         function renderQuestion() {
 
             if (questionCount < questionsArr.length) {
-                const question = document.createElement('div');
+                const textDiv = document.createElement('div');
+                const optionDiv = document.createElement('div');
                 const text = questionsArr[questionCount].text;
                 const a = questionsArr[questionCount].a;
                 const b = questionsArr[questionCount].b;
                 const c = questionsArr[questionCount].c;
 
-                const textDiv = document.createElement('div');
-                textDiv.textContent = text;
-                const aDiv = document.createElement('div');
-                aDiv.textContent = a;
-                const bDiv = document.createElement('div');
-                bDiv.textContent = b;
-                const cDiv = document.createElement('div');
-                cDiv.textContent = c;
+                const textH1 = document.createElement('h1');
+                textH1.textContent = text;
+                textH1.classList = 'questionText'
+                const aBtn = document.createElement('button');
+                aBtn.textContent = a;
+                aBtn.classList = 'options'
+                const bBtn = document.createElement('button');
+                bBtn.textContent = b;
+                bBtn.classList = 'options'
+                const cBtn = document.createElement('button');
+                cBtn.textContent = c;
+                cBtn.classList = 'options'
 
-                question.append(textDiv, aDiv, bDiv, cDiv);
-                document.body.append(question);
+                optionDiv.append(aBtn, bBtn, cBtn);
+                textDiv.append(textH1);
+                document.body.append(textDiv, optionDiv);
 
-                question.addEventListener('click', function (event) {
-                    if (event.target.textContent === questionsArr[questionCount][questionsArr[questionCount].correct]) {
+                optionDiv.addEventListener('click', function (event) {
+                    if (event.target.textContent === questionsArr[questionCount][questionsArr[questionCount].text]) {
+                        console.log('hi')
+                    }
+                    else if (event.target.textContent === questionsArr[questionCount][questionsArr[questionCount].correct]) {
                         alert('correct!');
                         questionCount++;
-                        question.innerHTML = '';
+                        optionDiv.innerHTML = '';
+                        textDiv.innerHTML = ''
                         // test to check whether time has ran out
                         if (questionCount < questionsArr.length && time > 0) {
                             renderQuestion();
@@ -135,13 +145,15 @@ function startQuiz() {
                         subtractTime();
                         alert('incorrect!');
                         questionCount++;
-                        question.innerHTML = '';
+                        optionDiv.innerHTML = '';
+                        textDiv.innerHTML = ''
                         if (questionCount < questionsArr.length && time > 0) {
                             renderQuestion();
                         } else {
                             clearInterval(timer);
                             alert(`Game Over! Your score was: ${time}`);
-                            question.innerHTML = '';
+                            optionDiv.innerHTML = '';
+                            textDiv.innerHTML = ''
                             finishQuiz();
                         }
                     }
@@ -169,7 +181,7 @@ function startQuiz() {
 // if new time is greater or if there is no highscores saved, prompt for initials/save input value of initials
 
 function finishQuiz() {
-    if (localStorage.getItem('HighScore') === null || JSON.parse(localStorage.getItem('HighScore')) < `${time}`) {
+    if (localStorage.getItem('HighScore') === null || JSON.parse(localStorage.getItem('HighScore') < `${time}`)) {
         var form = document.createElement('form');
         form.innerHTML = '<input type=text id="initials" placeholder="Type Initials Here">'
         var submitBtn = document.createElement('button');
@@ -178,19 +190,20 @@ function finishQuiz() {
         document.body.append(form, submitBtn);
         submitBtn.addEventListener('click', function () {
             localStorage.clear();
-            // var input = document.querySelector('#initials').value;
+            var input = document.querySelector('#initials').value;
             localStorage.setItem('HighScore', `${time}`);
+            localStorage.setItem('HighScoreName', `${input}`);
         })
-    } else if (JSON.parse(localStorage.getItem('HighScore')) >= `${time}`) {
+    } else if (JSON.parse(localStorage.getItem('HighScore') > `${time}`)) {
         alert('Sorry, you did not beat the current highscore.')
         document.body.innerHTML = '';
     }
 };
 
-console.log(localStorage.getItem('HighScore'))
+console.log(localStorage.getItem('HighScore'));
 console.log(`${time}`);
-console.log(JSON.parse(localStorage.getItem('HighScore')) > `${time}`);
-console.log(localStorage.getItem('HighScore') === null)
+console.log(JSON.parse(localStorage.getItem('HighScore') < `${time}`));
+console.log(localStorage.getItem('HighScore') === null);
 
 
 startQuiz();

@@ -1,114 +1,35 @@
 body {
-    background-color: dark;
+    background-color: blanchedalmond;
 }
 
-.main {
+.questionText {
     text-align: center;
+    font-size: 3vw;
+    margin-bottom: 40px;
+    font-family: 'Staatliches', cursive;
 }
 
-.main h1 {
-    font-size: 45px;
-}
-
-.question1,
-.question2,
-.question3,
-.question4,
-.question5 {
-    text-align: center;
-}
-
-.nextButton1,
-.nextButton2,
-.nextButton3,
-.nextButton4,
-.nextButton5,
-.question1 button,
-.question2 button,
-.question3 button,
-.question4 button,
-.question5 button,
-.finish,
-.start-btn {
+.start-btn,
+.options {
+    font-family: 'Staatliches', cursive;
     position: relative;
     display: block;
     margin: 10px;
-    background-color: red;
+    background-color: #5a6ee0;
     color: white;
     width: 155px;
     height: 40px;
     border: 2px solid black;
-    border-radius: 15px;
-    font-size: 85%;
+    border-radius: 10px;
+    font-size: 100%;
     margin-left: auto;
     margin-right: auto;
 }
 
-.question1 button:hover,
-.question2 button:hover,
-.question3 button:hover,
-.question4 button:hover,
-.question5 button:hover,
-.finish:hover,
-.start-btn:hover {
-    background-color: darkred;
-    box-shadow: 5px 5px 5px black;
+
+.start-btn:hover,
+.options:hover {
+    background-color: #485bc7;
+    box-shadow: 2px 2px 2px black;
     cursor: pointer;
-}
-
-.correct,
-.correct2,
-.correct3,
-.correct4,
-.correct5,
-.incorrect,
-.incorrect2,
-.incorrect3,
-.incorrect4,
-.incorrect5 {
-    border-top: 2px solid grey;
-    color: grey;
-    padding-top: 20px;
-}
-
-
-.nextButton,
-.nextButton2,
-.nextButton3,
-.nextButton4,
-.finish {
-    position: relative;
-    display: block;
-    margin: 10px;
-    background-color: red;
-    color: white;
-    width: 155px;
-    height: 40px;
-    border: 2px solid black;
-    border-radius: 15px;
-    font-size: 85%;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.nextButton:hover,
-.nextButton2:hover,
-.nextButton3:hover,
-.nextButton4:hover,
-.nextButton5:hover {
-    background-color: darkred;
-    box-shadow: 5px 5px 5px black;
-    cursor: pointer;
-}
-
-
-.header {
-    display: inline;
-}
-
-.countdown {
-    position: relative;
-    color: red;
-    text-align: right;
-    top: -45px;
 }
